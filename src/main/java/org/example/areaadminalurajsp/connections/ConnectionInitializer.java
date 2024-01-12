@@ -8,7 +8,6 @@ import org.apache.http.impl.client.HttpClients;
 
 import java.io.IOException;
 import java.net.URI;
-import java.net.http.HttpResponse;
 
 
 public class ConnectionInitializer {
@@ -18,26 +17,32 @@ public class ConnectionInitializer {
     private HttpDelete httpDelete;
     private HttpPut httpPut;
 
-    public CloseableHttpResponse doGetRequest(URI uri,String token) throws IOException {
+    public CloseableHttpResponse doGetRequest(URI uri, String token) throws IOException {
         httpGet = new HttpGet(uri);
-        httpGet.setHeader("Authorization","Bearer "+token);
+        httpGet.setHeader("Authorization", "Bearer " + token);
         return httpClient.execute(httpGet);
     }
-    public CloseableHttpResponse doPostRequest(URI uri, String json) throws IOException {
+
+    public CloseableHttpResponse doPostRequest(URI uri, String token, String json) throws IOException {
         httpPost = new HttpPost(uri);
         StringEntity entity = new StringEntity(json);
         httpPost.setEntity(entity);
         httpPost.setHeader("Content-type", "application/json");
+        httpPost.setHeader("Authorization", "Bearer " + token);
         return httpClient.execute(httpPost);
     }
-    public CloseableHttpResponse doDeleteRequest(URI uri) throws IOException {
+
+    public CloseableHttpResponse doDeleteRequest(URI uri,String token) throws IOException {
         httpDelete = new HttpDelete(uri);
+        httpDelete.setHeader("Authorization", "Bearer " + token);
         return httpClient.execute(httpDelete);
     }
-    public CloseableHttpResponse doPutRequest(URI uri, String json) throws IOException {
+
+    public CloseableHttpResponse doPutRequest(URI uri,String token, String json) throws IOException {
         httpPut = new HttpPut(uri);
         StringEntity entity = new StringEntity(json);
         httpPut.setEntity(entity);
+        httpPut.setHeader("Authorization", "Bearer " + token);
         httpPut.setHeader("Content-type", "application/json");
         return httpClient.execute(httpPut);
     }
