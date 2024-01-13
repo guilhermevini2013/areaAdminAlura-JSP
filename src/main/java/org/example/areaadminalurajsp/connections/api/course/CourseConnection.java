@@ -8,6 +8,7 @@ import org.example.areaadminalurajsp.dtos.insert.CourseDTO;
 
 import java.io.IOException;
 import java.net.URI;
+import java.time.LocalDate;
 
 
 public class CourseConnection extends ConnectionInitializer {
@@ -27,5 +28,10 @@ public class CourseConnection extends ConnectionInitializer {
         Gson gson = new Gson();
         String json = gson.toJson(courseDTO);
         doPostRequest(uriPostCourse,token,json);
+    }
+    public String getAllCourseByFilter(String name,String date,String assessment,String token) throws IOException {
+        URI uriAllCourseByFilter = URI.create("http://localhost:8080/course/filter?course="+name+"&publicationDate="+date+"&assessment="+assessment);
+        CloseableHttpResponse response = doGetRequest(uriAllCourseByFilter, token);
+        return EntityUtils.toString(response.getEntity());
     }
 }
