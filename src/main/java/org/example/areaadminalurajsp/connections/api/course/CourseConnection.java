@@ -18,8 +18,8 @@ public class CourseConnection extends ConnectionInitializer {
         CloseableHttpResponse response = doGetRequest(uriFindAllCourses,token);
         return EntityUtils.toString(response.getEntity());
     }
-    public String getAllCourse(String token) throws IOException {
-        URI uriFindAllCourse = URI.create("http://localhost:8080/course");
+    public String getAllCourse(Integer page,String token) throws IOException {
+        URI uriFindAllCourse = URI.create("http://localhost:8080/course?pages="+page);
         CloseableHttpResponse response = doGetRequest(uriFindAllCourse, token);
         return EntityUtils.toString(response.getEntity());
     }

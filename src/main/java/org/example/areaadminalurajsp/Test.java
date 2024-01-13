@@ -15,6 +15,6 @@ public class Test {
 //        CourseDTO courseDTO = new CourseDTO("Curso em video222222222222","Curso em video222222222222", List.of(new VideoLessonDTO("javaaaaaaaaaa","youtube.com//",5)),
 //                new CertificateDTO("seilaaakfdaldadkdkldlakld"));
 //        connection.postCourse(courseDTO,token);
-        System.out.println(connection.getAllCourseByFilter("","","2",token));
+//        System.out.println(connection.getAllCourseByFilter("","","2",token));
     }
 }
