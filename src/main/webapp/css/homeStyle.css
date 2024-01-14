@@ -4,6 +4,57 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-.logout{
+.section-dashboard{
+    padding-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.section-cards {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 20px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.icon-cards {
+    background-color: #3498db; /* Cor de fundo do ícone, altere conforme necessário */
+    padding: 20px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+ion-icon {
+    color: #fff; /* Cor do ícone, altere conforme necessário */
+    font-size: 2em;
+}
+
+.inf-card {
+    text-align: left;
     margin-left: 20px;
+}
+
+.inf-card span {
+    font-size: 1.2em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.inf-card c\:out {
+    font-size: 1.5em;
+    font-weight: bold;
 }

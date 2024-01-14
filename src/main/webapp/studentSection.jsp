@@ -1,5 +1,11 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Daniel
+  Date: 2024-01-14
+  Time: 4:02 p.m.
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Alura - Admin</title>
@@ -11,7 +17,6 @@
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/homeStyle.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -51,43 +56,6 @@
         </div>
     </div>
 </nav>
-<section>
-    <div class="home-section">
-        <div class="section-dashboard">
-            <div>
-                <h1>Dashboard</h1>
-            </div>
-            <div class="section-cards">
-                <div class="card">
-                    <div class="icon-cards">
-                        <ion-icon name="people-outline"></ion-icon>
-                    </div>
-                    <div class="inf-card">
-                        <span>Students</span>
-                        <c:out value="numberStudent"></c:out>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="icon-cards" style="background-color: #2ecc71;">
-                        <ion-icon name="briefcase-outline"></ion-icon>
-                    </div>
-                    <div class="inf-card">
-                        <span>Trainings</span>
-                        <c:out value="numberTrainings"></c:out>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="icon-cards" style="background-color: #e74c3c;">
-                        <ion-icon name="book-outline"></ion-icon>
-                    </div>
-                    <div class="inf-card">
-                        <span>Courses</span>
-                        <c:out value="numberCourses"></c:out>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 </body>
 </html>
