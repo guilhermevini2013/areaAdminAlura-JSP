@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url value="/dashboard" var="dashboard"/>
+<c:url value="/student" var="student"/>
 <html>
 <head>
     <title>Alura - Admin</title>
@@ -24,10 +26,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/dashboard">Dashboard</a>
+                    <a class="nav-link active" aria-current="page" href="${dashboard}">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/student">Student</a>
+                    <a class="nav-link" href="${student}">Student</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

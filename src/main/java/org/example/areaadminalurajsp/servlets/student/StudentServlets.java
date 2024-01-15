@@ -1,4 +1,4 @@
-package org.example.areaadminalurajsp.servlets;
+package org.example.areaadminalurajsp.servlets.student;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

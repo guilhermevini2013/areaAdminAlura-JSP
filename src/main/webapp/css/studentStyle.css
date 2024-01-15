@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+section {
+    display: flex;
+    justify-content: space-around;
+}
+
+.section-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10%;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.all-Student,
+.all-StudentBlocked {
+    width: 48%; /* 48% para deixar um espaço entre as tabelas */
+    display: inline-block;
+    vertical-align: top;
+}
+
+.all-Student table,
+.all-StudentBlocked table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.all-Student th,
+.all-Student td,
+.all-StudentBlocked th,
+.all-StudentBlocked td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.all-Student th,
+.all-StudentBlocked th {
+    background-color: #f2f2f2;
+}
+
+.page-title {
+    text-align: center;
+    color: #333;
+}
+.search-button {
+    background-color: #4CAF50; /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+    padding: 4px 9px; /* Espaçamento interno do botão */
+    border: none; /* Removendo a borda do botão */
+    border-radius: 5px; /* Borda arredondada */
+    cursor: pointer; /* Alterando o cursor ao passar o mouse */
+    font-size: 16px;
+    margin-left: 2%;
+}
+
+.search-button:hover {
+    background-color: #45a049; /* Cor de fundo do botão ao passar o mouse */
+}
+.styled-input {
+    width: 50%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px; /* Adicionando um espaçamento inferior ao input */
+    box-sizing: border-box; /* Garantindo que a largura inclua padding e borda */
+}
+.icon-button {
+    background-color: #3498db;
+    color: white;
+    padding: 4px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.block{
+    background-color: #db4234;
+}
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin-right: 5px;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.pagination a:hover {
+    background-color: #45a049;
+}
+button{
+    border: none;
+}
