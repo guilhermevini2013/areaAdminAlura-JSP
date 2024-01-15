@@ -21,6 +21,7 @@
             crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/studentStyle.css">
+    <script src="js/dynamicStudent.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -69,10 +70,8 @@
                     <input type="text" placeholder="Student ID or name" class="styled-input">
                     <button type="submit" class="search-button">search</button>
                     <ul class="pagination">
-                        <form action="${student}" method="get">
-                            <button type="submit">Anterior</button>
-                            <button type="submit">proximo</button>
-                        </form>
+                        <li><button><a href="#" >Anterior</a></button></li>
+                        <li><button><a href="#" >Próximo</a></button></li>
                     </ul>
                 </div>
                 <table>
@@ -135,6 +134,5 @@
         </div>
     </div>
 </section>
-
 </body>
 </html>

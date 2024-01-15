@@ -14,6 +14,8 @@ public class StudentServlets extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/studentSection.jsp");
+        String tipo = req.getParameter("type");
+        System.out.println(tipo);
         requestDispatcher.forward(req,resp);
     }
 
