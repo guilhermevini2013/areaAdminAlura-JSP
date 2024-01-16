@@ -1,6 +1,7 @@
 package org.example.areaadminalurajsp.connections;
 
 
+import com.google.gson.Gson;
 import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -11,11 +12,17 @@ import java.net.URI;
 
 
 public class ConnectionInitializer {
-    private CloseableHttpClient httpClient = HttpClients.createDefault();
+    private CloseableHttpClient httpClient;
     private HttpGet httpGet;
     private HttpPost httpPost;
     private HttpDelete httpDelete;
     private HttpPut httpPut;
+    private Gson gson;
+
+    public ConnectionInitializer(CloseableHttpClient httpClient,Gson gson) {
+        this.httpClient = httpClient;
+        this.gson = gson;
+    }
 
     public CloseableHttpResponse doGetRequest(URI uri, String token) throws IOException {
         httpGet = new HttpGet(uri);
@@ -45,5 +52,9 @@ public class ConnectionInitializer {
         httpPut.setHeader("Authorization", "Bearer " + token);
         httpPut.setHeader("Content-type", "application/json");
         return httpClient.execute(httpPut);
+    }
+
+    public Gson getGson() {
+        return gson;
     }
 }
