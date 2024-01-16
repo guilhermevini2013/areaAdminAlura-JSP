@@ -1,5 +1,12 @@
 package org.example.areaadminalurajsp.servlets;
 
+import com.google.gson.Gson;
+import org.apache.http.impl.client.HttpClients;
+import org.example.areaadminalurajsp.connections.ConnectionInitializer;
+import org.example.areaadminalurajsp.connections.api.dashboard.DashboardConnection;
+import org.example.areaadminalurajsp.dtos.read.DashBoardReadDTO;
+import org.example.areaadminalurajsp.service.DashboardService;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,10 +17,20 @@ import java.io.IOException;
 
 @WebServlet("/dashboard")
 public class HomeServlets extends HttpServlet {
+    private DashboardService dashboardService;
+
+    {
+        Gson gson = new Gson();
+        ConnectionInitializer initializer = new ConnectionInitializer(HttpClients.createDefault(), gson);
+        DashboardConnection dashboardConnection = new DashboardConnection(initializer);
+        dashboardService = new DashboardService(dashboardConnection);
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        DashBoardReadDTO dashBoard = dashboardService.getDashBoard("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NDQyMzA5fQ.fi_7xNKgDlvb8JqpvNPt9iFI3BHkuloItlQLP57mT0Y");
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/homeAdmin.jsp");
-        req.setAttribute("teste","oi mundo");
-        requestDispatcher.forward(req,resp);
+        req.setAttribute("dashBoard", dashBoard);
+        requestDispatcher.forward(req, resp);
     }
 }

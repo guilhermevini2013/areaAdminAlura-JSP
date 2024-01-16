@@ -30,6 +30,10 @@ public class DashBoardReadDTO {
         this.totalStudent = totalStudent;
     }
 
+    public Integer getTotalCourses() {
+        return totalCourses;
+    }
+
     public void setTotalTraining(Integer totalTraining) {
         this.totalTraining = totalTraining;
     }

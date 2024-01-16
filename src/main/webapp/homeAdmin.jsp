@@ -66,7 +66,7 @@
                     </div>
                     <div class="inf-card">
                         <span>Students</span>
-                        <c:out value="numberStudent"></c:out>
+                        <p>${dashBoard.getTotalStudent()}</p>
                     </div>
                 </div>
                 <div class="card">
@@ -75,7 +75,7 @@
                     </div>
                     <div class="inf-card">
                         <span>Trainings</span>
-                        <c:out value="numberTrainings"></c:out>
+                        <p>${dashBoard.getTotalTraining()}</p>
                     </div>
                 </div>
                 <div class="card">
@@ -84,7 +84,7 @@
                     </div>
                     <div class="inf-card">
                         <span>Courses</span>
-                        <c:out value="numberCourses"></c:out>
+                        <p>${dashBoard.totalCourses}</p>
                     </div>
                 </div>
             </div>
