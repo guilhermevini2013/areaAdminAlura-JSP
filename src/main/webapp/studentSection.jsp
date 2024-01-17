@@ -70,8 +70,8 @@
                     <input type="text" placeholder="Student ID or name" class="styled-input">
                     <button type="submit" class="search-button">search</button>
                     <ul class="pagination">
-                        <li><button><a href="/" >Anterior</a></button></li>
-                        <li><button><a href="#" >Próximo</a></button></li>
+                        <li><button><a href="/admin/student?pageUnblock=&pageBlock=" onclick="unIncrementPage('pageUnblock','pagination-back')" id="pagination-back">Anterior</a></button></li>
+                        <li><button><a href="/admin/student?pageUnblock=&pageBlock=" onclick="incrementPage('pageUnblock','pagination-advance')" id="pagination-advance">Próximo</a></button></li>
                     </ul>
                 </div>
                 <table>
@@ -108,8 +108,8 @@
                     <input type="text" placeholder="Student ID or name" class="styled-input">
                     <button type="submit" class="search-button">search</button>
                     <ul class="pagination">
-                        <li><button><a href="#" >Anterior</a></button></li>
-                        <li><button><a href="#" >Próximo</a></button></li>
+                        <li><button><a href="/admin/student?pageUnblock=&pageBlock=" onclick="unIncrementPage('pageBlock','pagination-back-block')" id="pagination-back-block">Anterior</a></button></li>
+                        <li><button><a href="/admin/student?pageUnblock=&pageBlock=" onclick="incrementPage('pageBlock','pagination-advance-block')" id="pagination-advance-block">Próximo</a></button></li>
                     </ul>
                 </div>
                 <table>
