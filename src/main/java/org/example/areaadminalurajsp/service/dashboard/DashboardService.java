@@ -1,4 +1,4 @@
-package org.example.areaadminalurajsp.service;
+package org.example.areaadminalurajsp.service.dashboard;
 
 import org.example.areaadminalurajsp.connections.api.dashboard.DashboardConnection;
 import org.example.areaadminalurajsp.dtos.read.DashBoardReadDTO;

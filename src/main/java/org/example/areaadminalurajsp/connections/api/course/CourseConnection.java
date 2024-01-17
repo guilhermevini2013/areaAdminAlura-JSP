@@ -8,7 +8,6 @@ import org.example.areaadminalurajsp.dtos.insert.CourseDTO;
 
 import java.io.IOException;
 import java.net.URI;
-import java.time.LocalDate;
 
 
 public class CourseConnection{
