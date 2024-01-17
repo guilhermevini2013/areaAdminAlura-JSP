@@ -6,10 +6,11 @@ public class StudentBlockedReadDTO {
     private String typeSignature;
     private Integer timeBlocked;
 
-    public StudentBlockedReadDTO(Long id, String name, String typeSignature) {
+    public StudentBlockedReadDTO(Long id, String name, String typeSignature, Integer timeBlocked) {
         this.id = id;
         this.name = name;
         this.typeSignature = typeSignature;
+        this.timeBlocked = timeBlocked;
     }
 
     public Long getId() {
@@ -22,5 +23,9 @@ public class StudentBlockedReadDTO {
 
     public String getTypeSignature() {
         return typeSignature;
+    }
+
+    public Integer getTimeBlocked() {
+        return timeBlocked;
     }
 }

@@ -84,7 +84,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <!-- Exemplo de dados da tabela (substitua com seus próprios dados) -->
                     <tr>
                         <c:forEach items="${allStudentUnblock}" var="studentUnblock">
                         <td>${studentUnblock.id}</td>
@@ -121,13 +120,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <!-- Exemplo de dados da tabela (substitua com seus próprios dados) -->
                     <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>Full-time</td>
-                        <td>2 hours</td>
-                        <td class="td-button"><button class="icon-button"><ion-icon name="lock-open-outline"></ion-icon></button></td>
+                        <c:forEach items="${allStudentBlock}" var="studentBlock">
+                            <td>${studentBlock.id}</td>
+                            <td>${studentBlock.name}</td>
+                            <td>${studentBlock.typeSignature}</td>
+                            <td>${studentBlock.timeBlocked}</td>
+                            <td><button class="icon-button block"><ion-icon name="lock-closed-outline"></ion-icon></button></td>
+                        </c:forEach>
                     </tr>
                     </tbody>
                 </table>

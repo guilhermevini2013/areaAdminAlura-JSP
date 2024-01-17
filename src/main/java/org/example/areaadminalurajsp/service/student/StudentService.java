@@ -1,6 +1,7 @@
 package org.example.areaadminalurajsp.service.student;
 
 import org.example.areaadminalurajsp.connections.api.admin.AdminConnection;
+import org.example.areaadminalurajsp.dtos.read.StudentBlockedReadDTO;
 import org.example.areaadminalurajsp.dtos.read.StudentReadDTO;
 
 import java.io.IOException;
@@ -15,5 +16,8 @@ public class StudentService {
 
     public List<StudentReadDTO> getAllStudent(Integer page, String token) throws IOException {
         return adminConnection.getAllStudentUnBlocked(page, token);
+    }
+    public List<StudentBlockedReadDTO> getAllStudentBlocked(Integer page, String token) throws IOException {
+        return adminConnection.getAllStudentBlocked(page, token);
     }
 }

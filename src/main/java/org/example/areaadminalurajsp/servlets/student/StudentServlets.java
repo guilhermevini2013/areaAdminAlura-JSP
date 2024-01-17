@@ -5,6 +5,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.example.areaadminalurajsp.connections.ConnectionInitializer;
 import org.example.areaadminalurajsp.connections.api.admin.AdminConnection;
 import org.example.areaadminalurajsp.connections.api.dashboard.DashboardConnection;
+import org.example.areaadminalurajsp.dtos.read.StudentBlockedReadDTO;
 import org.example.areaadminalurajsp.dtos.read.StudentReadDTO;
 import org.example.areaadminalurajsp.service.dashboard.DashboardService;
 import org.example.areaadminalurajsp.service.student.StudentService;
@@ -32,6 +33,7 @@ public class StudentServlets extends HttpServlet {
         String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NTM3NzkzfQ.hF4sysZy-gbGpjZLfuaOQBno0ovuI7Lhk1pt9SUiQJs";
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/studentSection.jsp");
         insertStudentUnblockedRequest(req,token);
+        insertStudentBlockedRequest(req,token);
         requestDispatcher.forward(req,resp);
     }
 
@@ -43,5 +45,8 @@ public class StudentServlets extends HttpServlet {
         List<StudentReadDTO> allStudent = studentService.getAllStudent(0, token);
         request.setAttribute("allStudentUnblock",allStudent);
     }
-
+    private void insertStudentBlockedRequest(HttpServletRequest request,String token) throws IOException {
+        List<StudentBlockedReadDTO> allStudent = studentService.getAllStudentBlocked(0, token);
+        request.setAttribute("allStudentBlock",allStudent);
+    }
 }
