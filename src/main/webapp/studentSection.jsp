@@ -80,21 +80,22 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Type Signature</th>
-                        <th>Time Blocked</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <!-- Exemplo de dados da tabela (substitua com seus próprios dados) -->
                     <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>Full-time</td>
-                        <td>2 hours</td>
+                        <c:forEach items="${allStudentUnblock}" var="studentUnblock">
+                        <td>${studentUnblock.id}</td>
+                        <td>${studentUnblock.name}</td>
+                        <td>${studentUnblock.typeSignature}</td>
                         <td><button class="icon-button block"><ion-icon name="lock-closed-outline"></ion-icon></button></td>
+                        </c:forEach>
                     </tr>
                     </tbody>
                 </table>
+
             </div>
         </div>
 

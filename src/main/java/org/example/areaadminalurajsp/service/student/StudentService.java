@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class StudentService {
-    public AdminConnection adminConnection;
+    private AdminConnection adminConnection;
 
     public StudentService(AdminConnection adminConnection) {
         this.adminConnection = adminConnection;
