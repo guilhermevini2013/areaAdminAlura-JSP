@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/dashboard" var="dashboard"/>
-<c:url value="/student" var="student"/>
+<c:url value="/student?pageUnblock=0&pageBlock=0" var="student"/>
 <html>
 <head>
     <title>Alura - Admin</title>

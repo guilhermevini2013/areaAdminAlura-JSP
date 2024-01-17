@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/dashboard" var="dashboard"/>
-<c:url value="/student" var="student"/>
+<c:url value="/student?pageUnblock=0&pageBlock=0" var="student"/>
 <html>
 <head>
     <title>Alura - Admin</title>
@@ -70,7 +70,7 @@
                     <input type="text" placeholder="Student ID or name" class="styled-input">
                     <button type="submit" class="search-button">search</button>
                     <ul class="pagination">
-                        <li><button><a href="#" >Anterior</a></button></li>
+                        <li><button><a href="/" >Anterior</a></button></li>
                         <li><button><a href="#" >Próximo</a></button></li>
                     </ul>
                 </div>
@@ -84,17 +84,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
                         <c:forEach items="${allStudentUnblock}" var="studentUnblock">
-                        <td>${studentUnblock.id}</td>
-                        <td>${studentUnblock.name}</td>
-                        <td>${studentUnblock.typeSignature}</td>
-                        <td><button class="icon-button block"><ion-icon name="lock-closed-outline"></ion-icon></button></td>
+                        <tr>
+                            <td>${studentUnblock.id}</td>
+                            <td>${studentUnblock.name}</td>
+                            <td>${studentUnblock.typeSignature}</td>
+                            <td><button class="icon-button block"><ion-icon name="lock-closed-outline"></ion-icon></button></td>
+                        </tr>
                         </c:forEach>
-                    </tr>
                     </tbody>
-                </table>
 
+                </table>
+                <c:if test="${empty allStudentUnblock}">
+                    <p>No result</p>
+                </c:if>
             </div>
         </div>
 
@@ -120,17 +123,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
                         <c:forEach items="${allStudentBlock}" var="studentBlock">
-                            <td>${studentBlock.id}</td>
-                            <td>${studentBlock.name}</td>
-                            <td>${studentBlock.typeSignature}</td>
-                            <td>${studentBlock.timeBlocked}</td>
-                            <td><button class="icon-button block"><ion-icon name="lock-closed-outline"></ion-icon></button></td>
+                            <tr>
+                                <td>${studentBlock.id}</td>
+                                <td>${studentBlock.name}</td>
+                                <td>${studentBlock.typeSignature}</td>
+                                <td>${studentBlock.timeBlocked}</td>
+                                <td><button class="icon-button block"><ion-icon name="lock-closed-outline"></ion-icon></button></td>
+                            </tr>
                         </c:forEach>
-                    </tr>
                     </tbody>
                 </table>
+                <c:if test="${empty allStudentBlock}">
+                    <p>No result</p>
+                </c:if>
             </div>
         </div>
     </div>
