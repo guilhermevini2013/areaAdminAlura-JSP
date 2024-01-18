@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="org.example.areaadminalurajsp.dtos.read.StudentReadDTO" %><%--
   Created by IntelliJ IDEA.
   User: Daniel
   Date: 2024-01-14
@@ -8,7 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/dashboard" var="dashboard"/>
-<c:url value="/student?pageUnblock=0&pageBlock=0" var="student"/>
+<c:url value="/student" var="student"/>
+<c:url value="/listStudentUnblocked?page=" var="findStudentUnblocked"/>
 <html>
 <head>
     <title>Alura - Admin</title>
@@ -21,7 +23,7 @@
             crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/studentStyle.css">
-    <script src="js/dynamicStudent.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -70,11 +72,15 @@
                     <input type="text" placeholder="Student ID or name" class="styled-input">
                     <button type="submit" class="search-button">search</button>
                     <ul class="pagination">
-                        <li><button><a href="/admin/student?pageUnblock=&pageBlock=" onclick="unIncrementPage('pageUnblock','pagination-back')" id="pagination-back">Anterior</a></button></li>
-                        <li><button><a href="/admin/student?pageUnblock=&pageBlock=" onclick="incrementPage('pageUnblock','pagination-advance')" id="pagination-advance">Próximo</a></button></li>
+                        <li>
+                            <button><a id="before">Anterior</a></button>
+                        </li>
+                        <li>
+                            <button><a id="next">Próximo</a></button>
+                        </li>
                     </ul>
                 </div>
-                <table>
+                <table id="sua-tabela-id">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -84,14 +90,18 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${allStudentUnblock}" var="studentUnblock">
+                    <c:forEach items="${allStudentUnblock}" var="studentUnblock">
                         <tr>
                             <td>${studentUnblock.id}</td>
                             <td>${studentUnblock.name}</td>
                             <td>${studentUnblock.typeSignature}</td>
-                            <td><button class="icon-button block"><ion-icon name="lock-closed-outline"></ion-icon></button></td>
+                            <td>
+                                <button class="icon-button block">
+                                    <ion-icon name="lock-closed-outline"></ion-icon>
+                                </button>
+                            </td>
                         </tr>
-                        </c:forEach>
+                    </c:forEach>
                     </tbody>
 
                 </table>
@@ -108,8 +118,16 @@
                     <input type="text" placeholder="Student ID or name" class="styled-input">
                     <button type="submit" class="search-button">search</button>
                     <ul class="pagination">
-                        <li><button><a href="/admin/student?pageUnblock=&pageBlock=" onclick="unIncrementPage('pageBlock','pagination-back-block')" id="pagination-back-block">Anterior</a></button></li>
-                        <li><button><a href="/admin/student?pageUnblock=&pageBlock=" onclick="incrementPage('pageBlock','pagination-advance-block')" id="pagination-advance-block">Próximo</a></button></li>
+                        <li>
+                            <button><a href="/admin/student?pageUnblock=&pageBlock="
+                                       onclick="unIncrementPage('pageBlock','pagination-back-block')"
+                                       id="pagination-back-block">Anterior</a></button>
+                        </li>
+                        <li>
+                            <button><a href="/admin/student?pageUnblock=&pageBlock="
+                                       onclick="incrementPage('pageBlock','pagination-advance-block')"
+                                       id="pagination-advance-block">Próximo</a></button>
+                        </li>
                     </ul>
                 </div>
                 <table>
@@ -123,15 +141,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${allStudentBlock}" var="studentBlock">
-                            <tr>
-                                <td>${studentBlock.id}</td>
-                                <td>${studentBlock.name}</td>
-                                <td>${studentBlock.typeSignature}</td>
-                                <td>${studentBlock.timeBlocked}</td>
-                                <td><button class="icon-button block"><ion-icon name="lock-closed-outline"></ion-icon></button></td>
-                            </tr>
-                        </c:forEach>
+                    <c:forEach items="${allStudentBlock}" var="studentBlock">
+                        <tr>
+                            <td>${studentBlock.id}</td>
+                            <td>${studentBlock.name}</td>
+                            <td>${studentBlock.typeSignature}</td>
+                            <td>${studentBlock.timeBlocked}</td>
+                            <td>
+                                <button class="icon-button block">
+                                    <ion-icon name="lock-closed-outline"></ion-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
                 <c:if test="${empty allStudentBlock}">
@@ -141,5 +163,6 @@
         </div>
     </div>
 </section>
+<script src="js/dynamicStudent.js"></script>
 </body>
 </html>
