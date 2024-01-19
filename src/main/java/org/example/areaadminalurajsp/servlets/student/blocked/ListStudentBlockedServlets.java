@@ -1,4 +1,4 @@
-package org.example.areaadminalurajsp.servlets.student;
+package org.example.areaadminalurajsp.servlets.student.blocked;
 
 import com.google.gson.Gson;
 import org.apache.http.impl.client.HttpClients;
@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/listStudentUnblocked")
-public class ListStudentsServlets extends HttpServlet {
+@WebServlet(value = "/listStudentBlocked")
+public class ListStudentBlockedServlets extends HttpServlet {
     private AdminService adminService;
 
     {
@@ -26,19 +26,15 @@ public class ListStudentsServlets extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1Njg4NzM3fQ.okXxOLvR7Z_jQAG4zElzB9MPJ9a_K5DAvio_4_9n8hI";
-        String json = new Gson().toJson(adminService.getAllStudent(getPageParam(req), token));
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NzEwNTM3fQ.54FLxPpD1Nr5W_QWfmd7FDcZHEML5S-TyhyAh15EW20";
+        String json = new Gson().toJson(adminService.getAllStudentBlocked(getPageParam(req),token));
+        System.out.println(json);
         resp.getWriter().write(json);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1Njg4NzM3fQ.okXxOLvR7Z_jQAG4zElzB9MPJ9a_K5DAvio_4_9n8hI";
-        String idStudent = req.getParameter("idStudent");
-        adminService.blockStudent(Long.valueOf(idStudent),token);
-        resp.sendRedirect("student");
     }
-
     private Integer getPageParam(HttpServletRequest req) {
         String page = req.getParameter("page");
         return Integer.valueOf(page);

@@ -1,24 +1,20 @@
-package org.example.areaadminalurajsp.servlets.student;
+package org.example.areaadminalurajsp.servlets.student.unblocked;
 
 import com.google.gson.Gson;
 import org.apache.http.impl.client.HttpClients;
 import org.example.areaadminalurajsp.connections.ConnectionInitializer;
 import org.example.areaadminalurajsp.connections.api.admin.AdminConnection;
-import org.example.areaadminalurajsp.dtos.read.StudentBlockedReadDTO;
-import org.example.areaadminalurajsp.dtos.read.StudentReadDTO;
 import org.example.areaadminalurajsp.service.admin.AdminService;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(value = "/student")
-public class StudentServlets extends HttpServlet {
+@WebServlet(value = "/listStudentUnblocked")
+public class ListStudentsServlets extends HttpServlet {
     private AdminService adminService;
 
     {
@@ -31,19 +27,21 @@ public class StudentServlets extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NzEwNTM3fQ.54FLxPpD1Nr5W_QWfmd7FDcZHEML5S-TyhyAh15EW20";
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/studentSection.jsp");
-        insertStudentUnblockedRequest(req, token);
-        insertStudentBlockedRequest(req, token);
-        requestDispatcher.forward(req, resp);
+        String json = new Gson().toJson(adminService.getAllStudent(getPageParam(req), token));
+        System.out.println(json);
+        resp.getWriter().write(json);
     }
 
-    private void insertStudentUnblockedRequest(HttpServletRequest request, String token) throws IOException {
-        List<StudentReadDTO> allStudent = adminService.getAllStudent(0, token);
-        request.setAttribute("allStudentUnblock", allStudent);
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NzEwNTM3fQ.54FLxPpD1Nr5W_QWfmd7FDcZHEML5S-TyhyAh15EW20";
+        String idStudent = req.getParameter("idStudent");
+        adminService.blockStudent(Long.valueOf(idStudent),token);
+        resp.sendRedirect("student");
     }
 
-    private void insertStudentBlockedRequest(HttpServletRequest request, String token) throws IOException {
-        List<StudentBlockedReadDTO> allStudent = adminService.getAllStudentBlocked(0, token);
-        request.setAttribute("allStudentBlock", allStudent);
+    private Integer getPageParam(HttpServletRequest req) {
+        String page = req.getParameter("page");
+        return Integer.valueOf(page);
     }
 }

@@ -124,18 +124,14 @@
                     <button type="submit" class="search-button">search</button>
                     <ul class="pagination">
                         <li>
-                            <button><a href="/admin/student?pageUnblock=&pageBlock="
-                                       onclick="unIncrementPage('pageBlock','pagination-back-block')"
-                                       id="pagination-back-block">Anterior</a></button>
+                            <button><a id="before-block">before</a></button>
                         </li>
                         <li>
-                            <button><a href="/admin/student?pageUnblock=&pageBlock="
-                                       onclick="incrementPage('pageBlock','pagination-advance-block')"
-                                       id="pagination-advance-block">Próximo</a></button>
+                            <button><a id="next-block">next</a></button>
                         </li>
                     </ul>
                 </div>
-                <table>
+                <table id="table-blocked">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -169,5 +165,7 @@
     </div>
 </section>
 <script src="js/ListedUnblockStudent.js"></script>
+<script src="js/ListedBlockStudent.js"></script>
+<script src="js/PaginationTypes.js"></script>
 </body>
 </html>
