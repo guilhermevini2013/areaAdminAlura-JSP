@@ -26,7 +26,7 @@ public class ListStudentsServlets extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NjE3OTU3fQ.nHG-06F6WMVn4s3qLJ9UjAHL8U1_GmzfOc3faNs_G4Y";
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NjQ3OTQ1fQ.O7Cf2BobVxOR5aJ0E6ERT3DrR3rQDr2WE3m6oqyUI6I";
         String json = new Gson().toJson(studentService.getAllStudent(getPageParam(req), token));
         resp.getWriter().write(json);
     }

@@ -80,7 +80,7 @@
                         </li>
                     </ul>
                 </div>
-                <table id="sua-tabela-id">
+                <table id="table-Unblocked">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -163,6 +163,6 @@
         </div>
     </div>
 </section>
-<script src="js/dynamicStudent.js"></script>
+<script src="js/ListedUnblockStudent.js"></script>
 </body>
 </html>
