@@ -36,6 +36,12 @@ public class AdminConnection {
         return Arrays.stream(studentBlockedReadDTO).toList();
     }
 
+    public String blockStudent(Long id, String token) throws IOException {
+        URI uri = URI.create("http://localhost:8080/admin/block/"+id+"?timeInHours=5");
+        CloseableHttpResponse response = initializer.doPostRequest(uri, token);
+        return EntityUtils.toString(response.getEntity());
+    }
+
     private JsonArray getContent(String json) {
         JsonObject jsonObject = initializer.getGson().fromJson(json, JsonObject.class);
         return jsonObject.getAsJsonArray("content");

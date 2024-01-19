@@ -11,6 +11,7 @@
 <c:url value="/dashboard" var="dashboard"/>
 <c:url value="/student" var="student"/>
 <c:url value="/listStudentUnblocked?page=" var="findStudentUnblocked"/>
+<c:url value="/listStudentUnblocked" var="listStudentUnblocked"/>
 <html>
 <head>
     <title>Alura - Admin</title>
@@ -73,38 +74,42 @@
                     <button type="submit" class="search-button">search</button>
                     <ul class="pagination">
                         <li>
-                            <button><a id="before">Anterior</a></button>
+                            <button><a id="before">before</a></button>
                         </li>
                         <li>
-                            <button><a id="next">Próximo</a></button>
+                            <button><a id="next">next</a></button>
                         </li>
                     </ul>
                 </div>
-                <table id="table-Unblocked">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Type Signature</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${allStudentUnblock}" var="studentUnblock">
+                <div class="table-Student">
+                    <table id="table-Unblocked">
+                        <thead>
                         <tr>
-                            <td>${studentUnblock.id}</td>
-                            <td>${studentUnblock.name}</td>
-                            <td>${studentUnblock.typeSignature}</td>
-                            <td>
-                                <button class="icon-button block">
-                                    <ion-icon name="lock-closed-outline"></ion-icon>
-                                </button>
-                            </td>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Type Signature</th>
+                            <th>Action</th>
                         </tr>
-                    </c:forEach>
-                    </tbody>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${allStudentUnblock}" var="studentUnblock">
+                            <tr>
+                                <td>${studentUnblock.id}</td>
+                                <td>${studentUnblock.name}</td>
+                                <td>${studentUnblock.typeSignature}</td>
+                                <td>
+                                    <form action="${listStudentUnblocked}" method="post">
+                                    <button class="icon-button block" name="idStudent" value="${studentUnblock.id}">
+                                        <ion-icon name="lock-closed-outline"></ion-icon>
+                                    </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
 
-                </table>
+                    </table>
+                </div>
                 <c:if test="${empty allStudentUnblock}">
                     <p>No result</p>
                 </c:if>
@@ -148,8 +153,8 @@
                             <td>${studentBlock.typeSignature}</td>
                             <td>${studentBlock.timeBlocked}</td>
                             <td>
-                                <button class="icon-button block">
-                                    <ion-icon name="lock-closed-outline"></ion-icon>
+                                <button class="icon-button">
+                                    <ion-icon name="lock-open-outline"></ion-icon>
                                 </button>
                             </td>
                         </tr>

@@ -37,7 +37,7 @@ function showTableUnblocked(data) {
         newRow.append("<td>" + studentUnblock.id + "</td>");
         newRow.append("<td>" + studentUnblock.name + "</td>");
         newRow.append("<td>" + studentUnblock.typeSignature + "</td>");
-        newRow.append("<td><button class='icon-button block' data-student-id='" + studentUnblock.id + "'><ion-icon name='lock-closed-outline'></ion-icon></button></td>");
+        newRow.append("<td><button class='icon-button block' data-student-id='" + studentUnblock.id + "'name='idStudent' value='"+studentUnblock.id+"'><ion-icon name='lock-closed-outline'></ion-icon></button></td>");
         $("#table-Unblocked tbody").append(newRow);
     });
 }

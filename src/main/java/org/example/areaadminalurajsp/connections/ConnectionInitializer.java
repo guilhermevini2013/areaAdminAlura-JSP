@@ -38,6 +38,11 @@ public class ConnectionInitializer {
         httpPost.setHeader("Authorization", "Bearer " + token);
         return httpClient.execute(httpPost);
     }
+    public CloseableHttpResponse doPostRequest(URI uri, String token) throws IOException {
+        httpPost = new HttpPost(uri);
+        httpPost.setHeader("Authorization", "Bearer " + token);
+        return httpClient.execute(httpPost);
+    }
 
     public CloseableHttpResponse doDeleteRequest(URI uri,String token) throws IOException {
         httpDelete = new HttpDelete(uri);

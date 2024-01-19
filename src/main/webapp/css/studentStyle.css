@@ -110,3 +110,7 @@ section {
 button{
     border: none;
 }
+.table-Student{
+    overflow-y: auto;
+    max-height: 660px;
+}

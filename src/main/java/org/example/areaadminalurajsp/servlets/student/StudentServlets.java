@@ -6,7 +6,7 @@ import org.example.areaadminalurajsp.connections.ConnectionInitializer;
 import org.example.areaadminalurajsp.connections.api.admin.AdminConnection;
 import org.example.areaadminalurajsp.dtos.read.StudentBlockedReadDTO;
 import org.example.areaadminalurajsp.dtos.read.StudentReadDTO;
-import org.example.areaadminalurajsp.service.student.StudentService;
+import org.example.areaadminalurajsp.service.admin.AdminService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,18 +19,18 @@ import java.util.List;
 
 @WebServlet(value = "/student")
 public class StudentServlets extends HttpServlet {
-    private StudentService studentService;
+    private AdminService adminService;
 
     {
         Gson gson = new Gson();
         ConnectionInitializer initializer = new ConnectionInitializer(HttpClients.createDefault(), gson);
         AdminConnection adminConnection = new AdminConnection(initializer);
-        studentService = new StudentService(adminConnection);
+        adminService = new AdminService(adminConnection);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NjQ3OTQ1fQ.O7Cf2BobVxOR5aJ0E6ERT3DrR3rQDr2WE3m6oqyUI6I";
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1Njg4NzM3fQ.okXxOLvR7Z_jQAG4zElzB9MPJ9a_K5DAvio_4_9n8hI";
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/studentSection.jsp");
         insertStudentUnblockedRequest(req, token);
         insertStudentBlockedRequest(req, token);
@@ -38,12 +38,12 @@ public class StudentServlets extends HttpServlet {
     }
 
     private void insertStudentUnblockedRequest(HttpServletRequest request, String token) throws IOException {
-        List<StudentReadDTO> allStudent = studentService.getAllStudent(0, token);
+        List<StudentReadDTO> allStudent = adminService.getAllStudent(0, token);
         request.setAttribute("allStudentUnblock", allStudent);
     }
 
     private void insertStudentBlockedRequest(HttpServletRequest request, String token) throws IOException {
-        List<StudentBlockedReadDTO> allStudent = studentService.getAllStudentBlocked(0, token);
+        List<StudentBlockedReadDTO> allStudent = adminService.getAllStudentBlocked(0, token);
         request.setAttribute("allStudentBlock", allStudent);
     }
 }
