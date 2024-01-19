@@ -17,6 +17,11 @@ function get(url) {
         url: url + numberPage.toString(),
         dataType: 'json',
         success: function (data) {
+            if (data.length === 0) {
+                console.log("A lista está vazia.");
+                numberPage = numberPage - 1;
+                return;
+            }
             showTableUnblocked(data)
         },
         error: function () {
