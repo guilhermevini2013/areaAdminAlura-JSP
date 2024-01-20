@@ -21,7 +21,8 @@ import java.util.List;
 public class StudentServlets extends HttpServlet {
     private AdminService adminService;
 
-    {
+    @Override
+    public void init() throws ServletException {
         Gson gson = new Gson();
         ConnectionInitializer initializer = new ConnectionInitializer(HttpClients.createDefault(), gson);
         AdminConnection adminConnection = new AdminConnection(initializer);

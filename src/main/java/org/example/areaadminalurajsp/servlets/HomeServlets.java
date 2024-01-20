@@ -19,7 +19,8 @@ import java.io.IOException;
 public class HomeServlets extends HttpServlet {
     private DashboardService dashboardService;
 
-    {
+    @Override
+    public void init() throws ServletException {
         Gson gson = new Gson();
         ConnectionInitializer initializer = new ConnectionInitializer(HttpClients.createDefault(), gson);
         DashboardConnection dashboardConnection = new DashboardConnection(initializer);

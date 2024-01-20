@@ -8,9 +8,13 @@ import java.io.IOException;
 public class DashboardService {
     private DashboardConnection dashboardConnection;
 
+    public DashboardService(){
+
+    }
     public DashboardService(DashboardConnection dashboardConnection) {
         this.dashboardConnection = dashboardConnection;
     }
+
     public DashBoardReadDTO getDashBoard(String token) throws IOException {
         DashBoardReadDTO dashboard = dashboardConnection.getDashboard(token);
         return dashboard;

@@ -17,7 +17,8 @@ import java.io.IOException;
 public class ListStudentsServlets extends HttpServlet {
     private AdminService adminService;
 
-    {
+    @Override
+    public void init() throws ServletException {
         Gson gson = new Gson();
         ConnectionInitializer initializer = new ConnectionInitializer(HttpClients.createDefault(), gson);
         AdminConnection adminConnection = new AdminConnection(initializer);
@@ -36,7 +37,7 @@ public class ListStudentsServlets extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NzEwNTM3fQ.54FLxPpD1Nr5W_QWfmd7FDcZHEML5S-TyhyAh15EW20";
         String idStudent = req.getParameter("idStudent");
-        adminService.blockStudent(Long.valueOf(idStudent),token);
+        adminService.blockStudent(Long.valueOf(idStudent), token);
         resp.sendRedirect("student");
     }
 

@@ -17,7 +17,8 @@ import java.io.IOException;
 public class ListStudentBlockedServlets extends HttpServlet {
     private AdminService adminService;
 
-    {
+    @Override
+    public void init() throws ServletException {
         Gson gson = new Gson();
         ConnectionInitializer initializer = new ConnectionInitializer(HttpClients.createDefault(), gson);
         AdminConnection adminConnection = new AdminConnection(initializer);
@@ -27,7 +28,7 @@ public class ListStudentBlockedServlets extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NzEwNTM3fQ.54FLxPpD1Nr5W_QWfmd7FDcZHEML5S-TyhyAh15EW20";
-        String json = new Gson().toJson(adminService.getAllStudentBlocked(getPageParam(req),token));
+        String json = new Gson().toJson(adminService.getAllStudentBlocked(getPageParam(req), token));
         System.out.println(json);
         resp.getWriter().write(json);
     }
@@ -35,6 +36,7 @@ public class ListStudentBlockedServlets extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
+
     private Integer getPageParam(HttpServletRequest req) {
         String page = req.getParameter("page");
         return Integer.valueOf(page);
