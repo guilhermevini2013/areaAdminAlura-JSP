@@ -29,7 +29,7 @@ public class HomeServlets extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DashBoardReadDTO dashBoard = dashboardService.getDashBoard("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NzEwNTM3fQ.54FLxPpD1Nr5W_QWfmd7FDcZHEML5S-TyhyAh15EW20");
+        DashBoardReadDTO dashBoard = dashboardService.getDashBoard("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NzgwMDYzfQ.TWmNR4ZW6r9t_EJXAMNifUC9ou5rdmdMQTE9Yj6HQ5A");
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/homeAdmin.jsp");
         req.setAttribute("dashBoard", dashBoard);
         requestDispatcher.forward(req, resp);

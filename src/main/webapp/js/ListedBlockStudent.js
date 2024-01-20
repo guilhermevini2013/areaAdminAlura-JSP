@@ -8,5 +8,10 @@ $('#before-block').click(async function () {
 })
 $('#next-block').click(async function () {
     numberPageBlocked++;
-    showTableBlocked(await get(urlBlockedPage,numberPageBlocked))
+    const result = await get(urlBlockedPage,numberPageBlocked);
+    if (result.length === 0) {
+        numberPageBlocked -= 1;
+    } else {
+        showTableBlocked(result)
+    }
 })
