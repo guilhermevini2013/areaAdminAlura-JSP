@@ -23,4 +23,8 @@ public class AdminService {
     public String blockStudent(Long id, String token) throws IOException {
         return adminConnection.blockStudent(id,token);
     }
+    public String unblockStudent(Long id, String token) throws IOException {
+        return adminConnection.unBlockStudent(id,token);
+    }
+
 }

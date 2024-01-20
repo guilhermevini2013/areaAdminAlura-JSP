@@ -41,6 +41,11 @@ public class AdminConnection {
         CloseableHttpResponse response = initializer.doPostRequest(uri, token);
         return EntityUtils.toString(response.getEntity());
     }
+    public String unBlockStudent(Long id,String token) throws IOException {
+        URI uri = URI.create("http://localhost:8080/admin/unblock/"+id);
+        CloseableHttpResponse response = initializer.doPostRequest(uri, token);
+        return EntityUtils.toString(response.getEntity());
+    }
 
     private JsonArray getContent(String json) {
         JsonObject jsonObject = initializer.getGson().fromJson(json, JsonObject.class);

@@ -1,17 +1,11 @@
-<%@ page import="java.util.List" %>
-<%@ page import="org.example.areaadminalurajsp.dtos.read.StudentReadDTO" %><%--
-  Created by IntelliJ IDEA.
-  User: Daniel
-  Date: 2024-01-14
-  Time: 4:02 p.m.
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/dashboard" var="dashboard"/>
 <c:url value="/student" var="student"/>
 <c:url value="/listStudentUnblocked?page=" var="findStudentUnblocked"/>
 <c:url value="/listStudentUnblocked" var="listStudentUnblocked"/>
+<c:url value="/listStudentBlocked" var="listStudentBlocked"/>
 <html>
 <head>
     <title>Alura - Admin</title>
@@ -99,9 +93,9 @@
                                 <td>${studentUnblock.typeSignature}</td>
                                 <td>
                                     <form action="${listStudentUnblocked}" method="post">
-                                    <button class="icon-button block" name="idStudent" value="${studentUnblock.id}">
-                                        <ion-icon name="lock-closed-outline"></ion-icon>
-                                    </button>
+                                        <button class="icon-button block" name="idStudent" value="${studentUnblock.id}">
+                                            <ion-icon name="lock-closed-outline"></ion-icon>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -131,32 +125,36 @@
                         </li>
                     </ul>
                 </div>
-                <table id="table-blocked">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Type Signature</th>
-                        <th>Time Blocked</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${allStudentBlock}" var="studentBlock">
+                <div class="table-Student">
+                    <table id="table-blocked">
+                        <thead>
                         <tr>
-                            <td>${studentBlock.id}</td>
-                            <td>${studentBlock.name}</td>
-                            <td>${studentBlock.typeSignature}</td>
-                            <td>${studentBlock.timeBlocked}</td>
-                            <td>
-                                <button class="icon-button">
-                                    <ion-icon name="lock-open-outline"></ion-icon>
-                                </button>
-                            </td>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Type Signature</th>
+                            <th>Time Blocked</th>
+                            <th>Action</th>
                         </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${allStudentBlock}" var="studentBlock">
+                            <tr>
+                                <td>${studentBlock.id}</td>
+                                <td>${studentBlock.name}</td>
+                                <td>${studentBlock.typeSignature}</td>
+                                <td>${studentBlock.timeBlocked}</td>
+                                <td>
+                                    <form action="${listStudentBlocked}" method="post">
+                                        <button class="icon-button" name="idStudent" value="${studentBlock.id}">
+                                            <ion-icon name="lock-open-outline"></ion-icon>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
                 <c:if test="${empty allStudentBlock}">
                     <p>No result</p>
                 </c:if>
@@ -166,6 +164,6 @@
 </section>
 <script src="js/ListedUnblockStudent.js"></script>
 <script src="js/ListedBlockStudent.js"></script>
-<script src="js/PaginationTypes.js"></script>
+<script src="js/FindStudent.js"></script>
 </body>
 </html>
