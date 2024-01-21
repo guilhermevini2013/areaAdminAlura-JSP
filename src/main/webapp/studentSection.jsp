@@ -58,6 +58,9 @@
         </div>
     </div>
 </nav>
+<div id="container-form-block">
+
+</div>
 <section>
     <div class="section-container">
         <div class="all-Student">
@@ -92,11 +95,9 @@
                                 <td>${studentUnblock.name}</td>
                                 <td>${studentUnblock.typeSignature}</td>
                                 <td>
-                                    <form action="${listStudentUnblocked}" method="post">
-                                        <button class="icon-button block" name="idStudent" value="${studentUnblock.id}">
-                                            <ion-icon name="lock-closed-outline"></ion-icon>
-                                        </button>
-                                    </form>
+                                    <button class="icon-button block" name="idStudent" value="${studentUnblock.id}" id="show-form-block">
+                                        <ion-icon name="lock-closed-outline"></ion-icon>
+                                    </button>
                                 </td>
                             </tr>
                         </c:forEach>

@@ -27,7 +27,7 @@ public class ListStudentsServlets extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NzgwMDYzfQ.TWmNR4ZW6r9t_EJXAMNifUC9ou5rdmdMQTE9Yj6HQ5A";
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1ODg0MDk1fQ.tSHp0O0L4MszW4J6RizsJLfXeSLkfgu7fuIKtWJMk44";
         String json = new Gson().toJson(adminService.getAllStudent(getPageParam(req), token));
         System.out.println(json);
         resp.getWriter().write(json);
@@ -35,9 +35,11 @@ public class ListStudentsServlets extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NzgwMDYzfQ.TWmNR4ZW6r9t_EJXAMNifUC9ou5rdmdMQTE9Yj6HQ5A";
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1ODg0MDk1fQ.tSHp0O0L4MszW4J6RizsJLfXeSLkfgu7fuIKtWJMk44";
         String idStudent = req.getParameter("idStudent");
-        adminService.blockStudent(Long.valueOf(idStudent), token);
+        String hours = req.getParameter("hours");
+        adminService.blockStudent(Long.valueOf(idStudent),Integer.valueOf(hours), token);
+        System.out.println("AAAAAAA");
         resp.sendRedirect("student");
     }
 

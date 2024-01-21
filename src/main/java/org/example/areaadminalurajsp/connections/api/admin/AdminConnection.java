@@ -36,8 +36,8 @@ public class AdminConnection {
         return Arrays.stream(studentBlockedReadDTO).toList();
     }
 
-    public String blockStudent(Long id, String token) throws IOException {
-        URI uri = URI.create("http://localhost:8080/admin/block/"+id+"?timeInHours=5");
+    public String blockStudent(Long id,Integer time, String token) throws IOException {
+        URI uri = URI.create("http://localhost:8080/admin/block/"+id+"?timeInHours="+time);
         CloseableHttpResponse response = initializer.doPostRequest(uri, token);
         return EntityUtils.toString(response.getEntity());
     }

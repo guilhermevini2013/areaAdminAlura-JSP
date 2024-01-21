@@ -16,7 +16,7 @@ import java.io.IOException;
 @WebServlet(value = "/listStudentBlocked")
 public class ListStudentBlockedServlets extends HttpServlet {
     private AdminService adminService;
-    String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1NzgwMDYzfQ.TWmNR4ZW6r9t_EJXAMNifUC9ou5rdmdMQTE9Yj6HQ5A";
+    String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1ODg0MDk1fQ.tSHp0O0L4MszW4J6RizsJLfXeSLkfgu7fuIKtWJMk44";
 
     @Override
     public void init() throws ServletException {

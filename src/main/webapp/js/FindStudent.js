@@ -1,5 +1,5 @@
 
-function get(url,numberPage) {
+function getPaginationStudent(url, numberPage) {
    return $.ajax({
         type: "GET",
         url: url + numberPage.toString(),
@@ -12,6 +12,7 @@ function get(url,numberPage) {
         }
     });
 }
+
 function showTableUnblocked(data) {
     $("#table-Unblocked tbody").empty();
     $.each(data, function (index, studentUnblock) {

@@ -20,8 +20,8 @@ public class AdminService {
     public List<StudentBlockedReadDTO> getAllStudentBlocked(Integer page, String token) throws IOException {
         return adminConnection.getAllStudentBlocked(page, token);
     }
-    public String blockStudent(Long id, String token) throws IOException {
-        return adminConnection.blockStudent(id,token);
+    public String blockStudent(Long id,Integer time, String token) throws IOException {
+        return adminConnection.blockStudent(id,time,token);
     }
     public String unblockStudent(Long id, String token) throws IOException {
         return adminConnection.unBlockStudent(id,token);
