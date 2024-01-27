@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:url value="/dashboard" var="dashboard"/>
-<c:url value="/student" var="student"/>
+<c:url value="/student?action=Student" var="student"/>
 <html>
 <head>
     <title>Alura - Admin</title>
@@ -13,7 +12,7 @@
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/homeStyle.css">
+    <link rel="stylesheet" type="text/css" href="/admin/static/css/homeStyle.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">

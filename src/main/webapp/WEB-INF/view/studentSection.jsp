@@ -1,11 +1,9 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:url value="/dashboard" var="dashboard"/>
-<c:url value="/student" var="student"/>
-<c:url value="/listStudentUnblocked?page=" var="findStudentUnblocked"/>
-<c:url value="/listStudentUnblocked" var="listStudentUnblocked"/>
-<c:url value="/listStudentBlocked" var="listStudentBlocked"/>
+<c:url value="/student?action=Student" var="student"/>
+<c:url value="/dashboard?action=Home" var="dashboard"/>
+<c:url value="/student?action=UnblockStudent" var="unblockStudent"/>
 <html>
 <head>
     <title>Alura - Admin</title>
@@ -17,7 +15,7 @@
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/studentStyle.css">
+    <link rel="stylesheet" type="text/css" href="/admin/static/css/studentStyle.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
@@ -145,7 +143,7 @@
                                 <td>${studentBlock.typeSignature}</td>
                                 <td>${studentBlock.timeBlocked}</td>
                                 <td>
-                                    <form action="${listStudentBlocked}" method="post">
+                                    <form action="${unblockStudent}" method="post">
                                         <button class="icon-button" name="idStudent" value="${studentBlock.id}">
                                             <ion-icon name="lock-open-outline"></ion-icon>
                                         </button>
@@ -163,8 +161,8 @@
         </div>
     </div>
 </section>
-<script src="js/ListedUnblockStudent.js"></script>
-<script src="js/ListedBlockStudent.js"></script>
-<script src="js/FindStudent.js"></script>
+<script src="/admin/static/js/ListedUnblockStudent.js"></script>
+<script src="/admin/static/js/ListedBlockStudent.js"></script>
+<script src="/admin/static/js/FindStudent.js"></script>
 </body>
 </html>

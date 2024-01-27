@@ -1,5 +1,5 @@
 let numberPageUnblocked = 0;
-let urlUnblockedPage = "/admin/listStudentUnblocked?page="
+let urlUnblockedPage = "/admin/student?action=ListedStudent&page="
 $("#before").click(async function () {
     if (numberPageUnblocked > 0) {
         numberPageUnblocked--;
@@ -22,7 +22,7 @@ $(document).ready(function() {
                 <div id="formulario-container">
                     <div id="formulario">
                         <h2>Enter the total hours to block</h2>
-                        <form action="/admin/listStudentUnblocked" method="post">
+                        <form action="/admin/student?action=BlockStudent" method="post">
                             <input type="hidden" name="idStudent" value="${studentId}">
                             <label>Total hours:</label>
                             <input type="number" name="hours" required>

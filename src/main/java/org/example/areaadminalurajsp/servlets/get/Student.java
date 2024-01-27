@@ -1,4 +1,4 @@
-package org.example.areaadminalurajsp.servlets.student;
+package org.example.areaadminalurajsp.servlets.get;
 
 import com.google.gson.Gson;
 import org.apache.http.impl.client.HttpClients;
@@ -7,22 +7,18 @@ import org.example.areaadminalurajsp.connections.api.admin.AdminConnection;
 import org.example.areaadminalurajsp.dtos.read.StudentBlockedReadDTO;
 import org.example.areaadminalurajsp.dtos.read.StudentReadDTO;
 import org.example.areaadminalurajsp.service.admin.AdminService;
+import org.example.areaadminalurajsp.servlets.IController;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(value = "/student")
-public class StudentServlets extends HttpServlet {
+public class Student implements IController {
     private AdminService adminService;
 
-    @Override
-    public void init() throws ServletException {
+    {
         Gson gson = new Gson();
         ConnectionInitializer initializer = new ConnectionInitializer(HttpClients.createDefault(), gson);
         AdminConnection adminConnection = new AdminConnection(initializer);
@@ -30,12 +26,11 @@ public class StudentServlets extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA1ODg0MDk1fQ.tSHp0O0L4MszW4J6RizsJLfXeSLkfgu7fuIKtWJMk44";
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/studentSection.jsp");
-        insertStudentUnblockedRequest(req, token);
-        insertStudentBlockedRequest(req, token);
-        requestDispatcher.forward(req, resp);
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA2MzU1OTA3fQ.LWjY8bS2XrYmsLBrGg3OuyAg7Ql4sNuafeGdEr9hYqA";
+        insertStudentUnblockedRequest(request, token);
+        insertStudentBlockedRequest(request, token);
+        return "forward:studentSection.jsp";
     }
 
     private void insertStudentUnblockedRequest(HttpServletRequest request, String token) throws IOException {
