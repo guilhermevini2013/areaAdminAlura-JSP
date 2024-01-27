@@ -12,15 +12,29 @@ function getPaginationStudent(url, numberPage) {
         }
     });
 }
+function getFindStudent(url,attribute) {
+    return $.ajax({
+        type: "GET",
+        url: url + attribute.toString(),
+        dataType: 'json',
+        success: function (data) {
+            return data;
+        },
+        error: function () {
+            console.log("Error in request.");
+        }
+    });
+}
 
 function showTableUnblocked(data) {
     $("#table-Unblocked tbody").empty();
+    console.log(data)
     $.each(data, function (index, studentUnblock) {
         const newRow = $("<tr>");
         newRow.append("<td>" + studentUnblock.id + "</td>");
         newRow.append("<td>" + studentUnblock.name + "</td>");
         newRow.append("<td>" + studentUnblock.typeSignature + "</td>");
-        newRow.append("<td><form action='/admin/student?action=BlockStudent' method='post'><button class='icon-button block' data-student-id='" + studentUnblock.id + "'name='idStudent' value='"+studentUnblock.id+"'><ion-icon name='lock-closed-outline'></ion-icon></button></form></td>");
+        newRow.append("<td><button id='show-form-block' class='icon-button block' data-student-id='" + studentUnblock.id + "'name='idStudent' value='"+studentUnblock.id+"'><ion-icon name='lock-closed-outline'></ion-icon></button></td>");
         $("#table-Unblocked tbody").append(newRow);
     });
 }

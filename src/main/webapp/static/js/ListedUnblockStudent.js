@@ -1,5 +1,6 @@
 let numberPageUnblocked = 0;
 let urlUnblockedPage = "/admin/student?action=ListedStudent&page="
+let urlFindUnblockName = "/admin/student?action=SearchStudentUnblock&name="
 $("#before").click(async function () {
     if (numberPageUnblocked > 0) {
         numberPageUnblocked--;
@@ -15,6 +16,11 @@ $("#next").click(async function () {
         showTableUnblocked(result)
     }
 });
+$('#searchUnblock').click(async function (){
+    const valueFind = document.getElementById('formFindUnblock').value
+    const result = await getFindStudent(urlFindUnblockName,valueFind);
+    showTableUnblocked(result)
+})
 $(document).ready(function() {
     $(document).on('click', '#show-form-block', function() {
         const studentId = $(this).val();

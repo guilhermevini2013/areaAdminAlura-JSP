@@ -46,6 +46,14 @@ public class AdminConnection {
         CloseableHttpResponse response = initializer.doPostRequest(uri, token);
         return EntityUtils.toString(response.getEntity());
     }
+    public List<StudentReadDTO> getStudentByFilter(String name, String token) throws IOException {
+        URI uri = URI.create("http://localhost:8080/admin/student/filter?name="+name);
+        CloseableHttpResponse response = initializer.doGetRequest(uri, token);
+        String json = EntityUtils.toString(response.getEntity());
+        StudentReadDTO[] studentReadDTO = initializer.getGson().fromJson(json, StudentReadDTO[].class);
+        return Arrays.stream(studentReadDTO).toList();
+    }
+
 
     private JsonArray getContent(String json) {
         JsonObject jsonObject = initializer.getGson().fromJson(json, JsonObject.class);

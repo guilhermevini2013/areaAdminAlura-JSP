@@ -16,8 +16,6 @@ public class StudentController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        String action = req.getParameter("action");
-        System.out.println(action);
         ControllerUtil.prepare(req, resp,"org.example.areaadminalurajsp.servlets.post.");
     }
 }

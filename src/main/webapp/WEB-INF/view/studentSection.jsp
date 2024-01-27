@@ -65,8 +65,8 @@
             <div>
                 <h1 class="page-title">List Student</h1>
                 <div>
-                    <input type="text" placeholder="Student ID or name" class="styled-input">
-                    <button type="submit" class="search-button">search</button>
+                    <input type="text" placeholder="Search student by name" class="styled-input" id="formFindUnblock">
+                    <button type="submit" class="search-button" id="searchUnblock">search</button>
                     <ul class="pagination">
                         <li>
                             <button><a id="before">before</a></button>
