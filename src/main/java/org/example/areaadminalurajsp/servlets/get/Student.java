@@ -1,29 +1,18 @@
 package org.example.areaadminalurajsp.servlets.get;
 
-import com.google.gson.Gson;
-import org.apache.http.impl.client.HttpClients;
-import org.example.areaadminalurajsp.connections.ConnectionInitializer;
-import org.example.areaadminalurajsp.connections.api.admin.AdminConnection;
 import org.example.areaadminalurajsp.dtos.read.StudentBlockedReadDTO;
 import org.example.areaadminalurajsp.dtos.read.StudentReadDTO;
 import org.example.areaadminalurajsp.service.admin.AdminService;
+import org.example.areaadminalurajsp.service.singletons.AdminServiceSingleton;
 import org.example.areaadminalurajsp.servlets.IController;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
 public class Student implements IController {
-    private AdminService adminService;
-
-    {
-        Gson gson = new Gson();
-        ConnectionInitializer initializer = new ConnectionInitializer(HttpClients.createDefault(), gson);
-        AdminConnection adminConnection = new AdminConnection(initializer);
-        adminService = new AdminService(adminConnection);
-    }
+    private AdminService adminService = AdminServiceSingleton.getInstance();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {

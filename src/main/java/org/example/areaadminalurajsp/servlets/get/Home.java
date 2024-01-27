@@ -1,11 +1,8 @@
 package org.example.areaadminalurajsp.servlets.get;
 
-import com.google.gson.Gson;
-import org.apache.http.impl.client.HttpClients;
-import org.example.areaadminalurajsp.connections.ConnectionInitializer;
-import org.example.areaadminalurajsp.connections.api.dashboard.DashboardConnection;
 import org.example.areaadminalurajsp.dtos.read.DashBoardReadDTO;
 import org.example.areaadminalurajsp.service.dashboard.DashboardService;
+import org.example.areaadminalurajsp.service.singletons.DashboardServiceSingleton;
 import org.example.areaadminalurajsp.servlets.IController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,14 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class Home implements IController {
-    private DashboardService dashboardService;
-
-    {
-        Gson gson = new Gson();
-        ConnectionInitializer initializer = new ConnectionInitializer(HttpClients.createDefault(), gson);
-        DashboardConnection dashboardConnection = new DashboardConnection(initializer);
-        dashboardService = new DashboardService(dashboardConnection);
-    }
+    private DashboardService dashboardService = DashboardServiceSingleton.getInstance();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
