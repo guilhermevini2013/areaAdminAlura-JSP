@@ -1,4 +1,4 @@
-let urlFindStudentName = "/admin/student?action=SearchStudentUnblock&name="
+let urlFindStudentName = "/admin/student?action=SearchStudent&name="
 function getPaginationStudent(url, numberPage) {
    return $.ajax({
         type: "GET",
