@@ -30,8 +30,8 @@ public class AdminService {
         return adminConnection.unBlockStudent(id, token);
     }
 
-    public List<StudentReadDTO> getStudentByFilter(String name, String token) throws IOException {
-        return adminConnection.getStudentByFilter(name, token);
+    public List<StudentReadDTO> getStudentByFilter(String name,String typeStudent, String token) throws IOException {
+        return adminConnection.getStudentByFilter(name,typeStudent, token);
     }
 
 }

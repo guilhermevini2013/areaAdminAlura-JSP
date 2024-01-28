@@ -1,4 +1,4 @@
-
+let urlFindStudentName = "/admin/student?action=SearchStudentUnblock&name="
 function getPaginationStudent(url, numberPage) {
    return $.ajax({
         type: "GET",
@@ -12,10 +12,10 @@ function getPaginationStudent(url, numberPage) {
         }
     });
 }
-function getFindStudent(url,attribute) {
+function getFindStudent(url,attribute,typeStudent) {
     return $.ajax({
         type: "GET",
-        url: url + attribute.toString(),
+        url: url + attribute.toString()+"&typeStudent="+typeStudent.toString(),
         dataType: 'json',
         success: function (data) {
             return data;

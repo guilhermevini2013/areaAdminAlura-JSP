@@ -7,6 +7,11 @@ $('#before-block').click(async function () {
         showTableBlocked(await getPaginationStudent(urlBlockedPage,numberPageBlocked))
     }
 });
+$('#searchBlock').click(async function (){
+    const valueFind = document.getElementById('formFindBlock').value
+    const result = await getFindStudent(urlFindStudentName,valueFind,"block");
+    showTableBlocked(result)
+})
 $('#next-block').click(async function () {
     numberPageBlocked++;
     const result = await getPaginationStudent(urlBlockedPage,numberPageBlocked);
