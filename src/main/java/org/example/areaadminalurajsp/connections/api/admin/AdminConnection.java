@@ -63,7 +63,11 @@ public class AdminConnection {
         String json = initializer.getGson().toJson(loginAdmin);
         CloseableHttpResponse response = initializer.doPostRequestNoToken(uri, json);
         String responseToken = EntityUtils.toString(response.getEntity());
-        return initializer.getGson().fromJson(responseToken, TokenDTO.class).token();
+        TokenDTO tokenDto = initializer.getGson().fromJson(responseToken, TokenDTO.class);
+        if (tokenDto.token() == null) {
+            return null;
+        }
+        return tokenDto.token();
     }
 
     private JsonArray getContent(String json) {

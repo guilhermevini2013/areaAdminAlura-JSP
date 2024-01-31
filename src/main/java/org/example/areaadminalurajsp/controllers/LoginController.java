@@ -13,4 +13,10 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         ControllerUtil.prepare(req, resp, "org.example.areaadminalurajsp.servlets.get.");
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+        System.out.println(req.getParameter("action"));
+        ControllerUtil.prepare(req, resp, "org.example.areaadminalurajsp.servlets.post.");
+    }
 }

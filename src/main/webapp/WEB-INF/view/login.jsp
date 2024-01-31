@@ -1,4 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:url value="/login?action=LoginForm" var="login"/>
 <html>
 <head>
     <title>Login - Admin</title>
@@ -20,10 +22,10 @@
                     <h1>Admin - Alura</h1>
                 </div>
                 <div class="container-Form-content">
-                    <form action="">
-                        <input type="text" placeholder="User">
-                        <input type="password" placeholder="Password">
-                        <button>Sign in</button>
+                    <form action="${login}" method="post">
+                        <input type="text" placeholder="User" name="email">
+                        <input type="password" placeholder="Password" name="password">
+                        <button type="submit">Sign in</button>
                     </form>
                 </div>
             </div>

@@ -35,4 +35,9 @@ public class ControllerUtil {
             throw new RuntimeException(e);
         }
     }
+    public static String recoverToken(HttpServletRequest request){
+        var authHeader = request.getHeader("Authorization");
+        if(authHeader == null) return null;
+        return authHeader.replace("Bearer ", "");
+    }
 }

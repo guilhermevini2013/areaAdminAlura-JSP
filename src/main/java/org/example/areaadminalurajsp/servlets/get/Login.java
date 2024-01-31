@@ -9,7 +9,6 @@ import java.io.IOException;
 public class Login implements IController {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        
-        return "redirect:dashboard?action=Home";
+        return "forward:login.jsp";
     }
 }

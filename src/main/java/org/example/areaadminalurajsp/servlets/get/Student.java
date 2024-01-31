@@ -4,6 +4,7 @@ import org.example.areaadminalurajsp.dtos.read.StudentBlockedReadDTO;
 import org.example.areaadminalurajsp.dtos.read.StudentReadDTO;
 import org.example.areaadminalurajsp.service.admin.AdminService;
 import org.example.areaadminalurajsp.service.singletons.AdminServiceSingleton;
+import org.example.areaadminalurajsp.service.util.ControllerUtil;
 import org.example.areaadminalurajsp.servlets.IController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,7 @@ public class Student implements IController {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA2NTMwMzg2fQ.JeyLGqRaioa6V9jjlKCHFlxPE2Y8m6VZu9RhpAt3Ytc";
+        String token = ControllerUtil.recoverToken(request);
         insertStudentUnblockedRequest(request, token);
         insertStudentBlockedRequest(request, token);
         return "forward:studentSection.jsp";
