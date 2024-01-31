@@ -23,7 +23,7 @@ public class BlockStudent implements IController {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA2NDkxODY1fQ.x3VTIIot5q2yC-qztfWNuk6SahxcoiLxa92xHweMT0M";
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluQGFkbWluIiwiZXhwIjoxNzA2NTMwMzg2fQ.JeyLGqRaioa6V9jjlKCHFlxPE2Y8m6VZu9RhpAt3Ytc";
         String idStudent = request.getParameter("idStudent");
         String hours = request.getParameter("hours");
         adminService.blockStudent(Long.valueOf(idStudent), Integer.valueOf(hours), token);
