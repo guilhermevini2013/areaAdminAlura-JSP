@@ -1,6 +1,7 @@
 package org.example.areaadminalurajsp.service.admin;
 
 import org.example.areaadminalurajsp.connections.api.admin.AdminConnection;
+import org.example.areaadminalurajsp.dtos.read.LoginAdmin;
 import org.example.areaadminalurajsp.dtos.read.StudentBlockedReadDTO;
 import org.example.areaadminalurajsp.dtos.read.StudentReadDTO;
 
@@ -32,6 +33,9 @@ public class AdminService {
 
     public List<StudentReadDTO> getStudentByFilter(String name,String typeStudent, String token) throws IOException {
         return adminConnection.getStudentByFilter(name,typeStudent, token);
+    }
+    public String loginAdmin(LoginAdmin loginAdmin) throws IOException {
+        return adminConnection.loginAdmin(loginAdmin);
     }
 
 }

@@ -5,8 +5,10 @@ import com.google.gson.JsonObject;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.example.areaadminalurajsp.connections.ConnectionInitializer;
+import org.example.areaadminalurajsp.dtos.read.LoginAdmin;
 import org.example.areaadminalurajsp.dtos.read.StudentBlockedReadDTO;
 import org.example.areaadminalurajsp.dtos.read.StudentReadDTO;
+import org.example.areaadminalurajsp.dtos.read.TokenDTO;
 
 import java.io.IOException;
 import java.net.URI;
@@ -36,28 +38,36 @@ public class AdminConnection {
         return Arrays.stream(studentBlockedReadDTO).toList();
     }
 
-    public String blockStudent(Long id,Integer time, String token) throws IOException {
-        URI uri = URI.create("http://localhost:8080/admin/block/"+id+"?timeInHours="+time);
+    public String blockStudent(Long id, Integer time, String token) throws IOException {
+        URI uri = URI.create("http://localhost:8080/admin/block/" + id + "?timeInHours=" + time);
         CloseableHttpResponse response = initializer.doPostRequest(uri, token);
         return EntityUtils.toString(response.getEntity());
     }
-    public String unBlockStudent(Long id,String token) throws IOException {
-        URI uri = URI.create("http://localhost:8080/admin/unblock/"+id);
+
+    public String unBlockStudent(Long id, String token) throws IOException {
+        URI uri = URI.create("http://localhost:8080/admin/unblock/" + id);
         CloseableHttpResponse response = initializer.doPostRequest(uri, token);
         return EntityUtils.toString(response.getEntity());
     }
-    public List<StudentReadDTO> getStudentByFilter(String name,String typeStudent, String token) throws IOException {
-        URI uri = URI.create("http://localhost:8080/admin/student/filter?name="+name+"&typeStudent="+typeStudent);
+
+    public List<StudentReadDTO> getStudentByFilter(String name, String typeStudent, String token) throws IOException {
+        URI uri = URI.create("http://localhost:8080/admin/student/filter?name=" + name + "&typeStudent=" + typeStudent);
         CloseableHttpResponse response = initializer.doGetRequest(uri, token);
         String json = EntityUtils.toString(response.getEntity());
         StudentReadDTO[] studentReadDTO = initializer.getGson().fromJson(json, StudentReadDTO[].class);
         return Arrays.stream(studentReadDTO).toList();
     }
 
+    public String loginAdmin(LoginAdmin loginAdmin) throws IOException {
+        URI uri = URI.create("http://localhost:8080/student/login");
+        String json = initializer.getGson().toJson(loginAdmin);
+        CloseableHttpResponse response = initializer.doPostRequestNoToken(uri, json);
+        String responseToken = EntityUtils.toString(response.getEntity());
+        return initializer.getGson().fromJson(responseToken, TokenDTO.class).token();
+    }
 
     private JsonArray getContent(String json) {
         JsonObject jsonObject = initializer.getGson().fromJson(json, JsonObject.class);
         return jsonObject.getAsJsonArray("content");
     }
-
 }

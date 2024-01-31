@@ -38,6 +38,13 @@ public class ConnectionInitializer {
         httpPost.setHeader("Authorization", "Bearer " + token);
         return httpClient.execute(httpPost);
     }
+    public CloseableHttpResponse doPostRequestNoToken(URI uri, String json) throws IOException {
+        httpPost = new HttpPost(uri);
+        StringEntity entity = new StringEntity(json);
+        httpPost.setEntity(entity);
+        httpPost.setHeader("Content-type", "application/json");
+        return httpClient.execute(httpPost);
+    }
     public CloseableHttpResponse doPostRequest(URI uri, String token) throws IOException {
         httpPost = new HttpPost(uri);
         httpPost.setHeader("Authorization", "Bearer " + token);
