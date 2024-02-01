@@ -13,8 +13,12 @@
             crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/admin/static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/admin/static/css/warn.css">
 </head>
 <body>
+    <c:if test="${not empty warnModel}">
+        <c:import url="warnComponent.jsp"/>
+    </c:if>
     <section>
         <div class="container">
             <div class="container-Form">

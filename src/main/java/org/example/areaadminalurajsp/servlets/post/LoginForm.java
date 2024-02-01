@@ -1,6 +1,7 @@
 package org.example.areaadminalurajsp.servlets.post;
 
 import org.example.areaadminalurajsp.dtos.read.LoginAdmin;
+import org.example.areaadminalurajsp.exception.BadCredentialsException;
 import org.example.areaadminalurajsp.service.admin.AdminService;
 import org.example.areaadminalurajsp.service.singletons.AdminServiceSingleton;
 import org.example.areaadminalurajsp.servlets.IController;
@@ -17,7 +18,13 @@ public class LoginForm implements IController {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String token = adminService.loginAdmin(new LoginAdmin(email, password));
+        String token = null;
+        try {
+            token = adminService.loginAdmin(new LoginAdmin(email, password));
+        } catch (BadCredentialsException e) {
+            request.getSession().setAttribute("warnModel",e.getErrorModel());
+            return "redirect:login?action=Login";
+        }
         if (token != null) {
             HttpSession session = request.getSession();
             session.setAttribute("token",token);

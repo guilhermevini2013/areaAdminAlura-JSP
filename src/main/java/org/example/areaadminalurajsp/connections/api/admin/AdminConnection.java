@@ -5,10 +5,12 @@ import com.google.gson.JsonObject;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.example.areaadminalurajsp.connections.ConnectionInitializer;
+import org.example.areaadminalurajsp.dtos.error.ErrorModel;
 import org.example.areaadminalurajsp.dtos.read.LoginAdmin;
 import org.example.areaadminalurajsp.dtos.read.StudentBlockedReadDTO;
 import org.example.areaadminalurajsp.dtos.read.StudentReadDTO;
 import org.example.areaadminalurajsp.dtos.read.TokenDTO;
+import org.example.areaadminalurajsp.exception.BadCredentialsException;
 
 import java.io.IOException;
 import java.net.URI;
@@ -58,13 +60,19 @@ public class AdminConnection {
         return Arrays.stream(studentReadDTO).toList();
     }
 
-    public String loginAdmin(LoginAdmin loginAdmin) throws IOException {
+    public String loginAdmin(LoginAdmin loginAdmin) throws IOException, BadCredentialsException {
         URI uri = URI.create("http://localhost:8080/student/login");
         String json = initializer.getGson().toJson(loginAdmin);
         CloseableHttpResponse response = initializer.doPostRequestNoToken(uri, json);
-        String responseToken = EntityUtils.toString(response.getEntity());
+        String responseToken = verifyStatusApi(response);
         TokenDTO tokenDto = initializer.getGson().fromJson(responseToken, TokenDTO.class);
         return tokenDto.token();
+    }
+    public String verifyStatusApi(CloseableHttpResponse response) throws IOException, BadCredentialsException {
+        if (response.getStatusLine().getStatusCode() != 200 && response.getStatusLine().getStatusCode() != 201) {
+            throw new BadCredentialsException(initializer.getGson().fromJson(EntityUtils.toString(response.getEntity()), ErrorModel.class));
+        }
+        return EntityUtils.toString(response.getEntity());
     }
 
     private JsonArray getContent(String json) {

@@ -4,6 +4,7 @@ import org.example.areaadminalurajsp.connections.api.admin.AdminConnection;
 import org.example.areaadminalurajsp.dtos.read.LoginAdmin;
 import org.example.areaadminalurajsp.dtos.read.StudentBlockedReadDTO;
 import org.example.areaadminalurajsp.dtos.read.StudentReadDTO;
+import org.example.areaadminalurajsp.exception.BadCredentialsException;
 
 import java.io.IOException;
 import java.util.List;
@@ -34,7 +35,7 @@ public class AdminService {
     public List<StudentReadDTO> getStudentByFilter(String name,String typeStudent, String token) throws IOException {
         return adminConnection.getStudentByFilter(name,typeStudent, token);
     }
-    public String loginAdmin(LoginAdmin loginAdmin) throws IOException {
+    public String loginAdmin(LoginAdmin loginAdmin) throws IOException, BadCredentialsException {
         return adminConnection.loginAdmin(loginAdmin);
     }
 

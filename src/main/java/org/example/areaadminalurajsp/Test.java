@@ -9,6 +9,5 @@ import java.io.IOException;
 public class Test {
     public static void main(String[] args) throws IOException {
         AdminService adminService = AdminServiceSingleton.getInstance();
-        System.out.println(adminService.loginAdmin(new LoginAdmin("admin@admin","admin")));;
     }
 }
