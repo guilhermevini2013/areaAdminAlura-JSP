@@ -8,6 +8,7 @@ import org.example.areaadminalurajsp.servlets.IController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class Home implements IController {
@@ -15,8 +16,11 @@ public class Home implements IController {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.out.println(ControllerUtil.recoverToken(request));
-        DashBoardReadDTO dashBoard = dashboardService.getDashBoard(ControllerUtil.recoverToken(request));
+        String token = (String) request.getSession().getAttribute("token");
+        if (token == null){
+            return "redirect:login?action=Login";
+        }
+        DashBoardReadDTO dashBoard = dashboardService.getDashBoard(token);
         request.setAttribute("dashBoard", dashBoard);
         return "forward:homeAdmin.jsp";
     }

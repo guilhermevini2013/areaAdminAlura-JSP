@@ -15,7 +15,10 @@ public class SearchStudent implements IController {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String token = ControllerUtil.recoverToken(request);
+        String token = (String) request.getSession().getAttribute("token");
+        if (token == null){
+            return "redirect:login?action=Login";
+        }
         String name = request.getParameter("name");
         String typeStudent = request.getParameter("typeStudent");
         String json = new Gson().toJson(adminService.getStudentByFilter(name, typeStudent, token));

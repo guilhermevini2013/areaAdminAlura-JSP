@@ -17,7 +17,10 @@ public class Student implements IController {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String token = ControllerUtil.recoverToken(request);
+        String token = (String) request.getSession().getAttribute("token");
+        if (token == null){
+            return "redirect:login?action=Login";
+        }
         insertStudentUnblockedRequest(request, token);
         insertStudentBlockedRequest(request, token);
         return "forward:studentSection.jsp";
