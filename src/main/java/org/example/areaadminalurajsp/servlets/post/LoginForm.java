@@ -23,6 +23,6 @@ public class LoginForm implements IController {
             session.setAttribute("token",token);
             return "redirect:dashboard?action=Home";
         }
-        return null;
+        return "forward:login.jsp";
     }
 }

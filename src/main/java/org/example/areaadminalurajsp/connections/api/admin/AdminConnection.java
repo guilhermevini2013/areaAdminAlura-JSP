@@ -64,9 +64,6 @@ public class AdminConnection {
         CloseableHttpResponse response = initializer.doPostRequestNoToken(uri, json);
         String responseToken = EntityUtils.toString(response.getEntity());
         TokenDTO tokenDto = initializer.getGson().fromJson(responseToken, TokenDTO.class);
-        if (tokenDto.token() == null) {
-            return null;
-        }
         return tokenDto.token();
     }
 
