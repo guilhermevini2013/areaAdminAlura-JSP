@@ -61,7 +61,7 @@ public class AdminConnection {
     }
 
     public String loginAdmin(LoginAdmin loginAdmin) throws IOException, BadCredentialsException {
-        URI uri = URI.create("http://localhost:8080/student/login");
+        URI uri = URI.create("http://localhost:8080/admin/login");
         String json = initializer.getGson().toJson(loginAdmin);
         CloseableHttpResponse response = initializer.doPostRequestNoToken(uri, json);
         String responseToken = verifyStatusApi(response);
