@@ -1,4 +1,4 @@
-package org.example.areaadminalurajsp.filters;
+package org.example.areaadminalurajsp.controllers.filters;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
