@@ -16,9 +16,6 @@ public class ListedStudent implements IController {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String token = (String) request.getSession().getAttribute("token");
-        if (token == null){
-            return "redirect:login?action=Login";
-        }
         String json = new Gson().toJson(adminService.getAllStudent(getPageParam(request), token));
         response.getWriter().write(json);
         return null;

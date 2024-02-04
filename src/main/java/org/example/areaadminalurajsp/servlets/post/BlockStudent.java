@@ -19,9 +19,6 @@ public class BlockStudent implements IController {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String token = (String) request.getSession().getAttribute("token");
-        if (token == null){
-            return "redirect:login?action=Login";
-        }
         String idStudent = request.getParameter("idStudent");
         String hours = request.getParameter("hours");
         adminService.blockStudent(Long.valueOf(idStudent), Integer.valueOf(hours), token);

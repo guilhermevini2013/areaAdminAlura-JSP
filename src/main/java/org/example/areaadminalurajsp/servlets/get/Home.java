@@ -17,9 +17,6 @@ public class Home implements IController {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String token = (String) request.getSession().getAttribute("token");
-        if (token == null){
-            return "redirect:login?action=Login";
-        }
         DashBoardReadDTO dashBoard = dashboardService.getDashBoard(token);
         request.setAttribute("dashBoard", dashBoard);
         return "forward:homeAdmin.jsp";
