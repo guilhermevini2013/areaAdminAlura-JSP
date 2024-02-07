@@ -61,7 +61,6 @@
                             </tr>
                         </c:forEach>
                         </tbody>
-
                     </table>
                 </div>
                 <c:if test="${empty allStudentUnblock}">

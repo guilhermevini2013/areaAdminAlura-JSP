@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:url value="/student?action=Student" var="student"/>
 <c:url value="/dashboard?action=Home" var="dashboard"/>
+<c:url value="/course?action=Courses" var="course"/>
 <c:url value="/login?action=LogoutForm" var="logoutForm"/>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -25,7 +26,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Training</a></li>
-                        <li><a class="dropdown-item" href="#">Course</a></li>
+                        <li><a class="dropdown-item" href="${course}">Course</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

@@ -34,8 +34,28 @@
                     <div class="container-Lesson-create">
                         <button>Create video lesson</button>
                     </div>
+                    <div class="container-video">
+                        <div class="video-Lesson">
+                            <span>Name Lesson</span>
+                            <span>Time Lesson</span>
+                            <span>archive</span>
+                            <a href="">Remove</a>
+                        </div>
+                        <div class="video-Lesson">
+                            <span>Name Lesson</span>
+                            <span>Time Lesson</span>
+                            <span>archive</span>
+                            <a href="">Remove</a>
+                        </div>
+                        <div class="video-Lesson">
+                            <span>Name Lesson</span>
+                            <span>Time Lesson</span>
+                            <span>archive</span>
+                            <a href="">Remove</a>
+                        </div>
+                    </div>
                 </div>
-                <button type="submit" class="container-Form-Course-create">Create</button>
+                <button type="submit" class="container-Form-Course-create">Create course</button>
             </form>
         </div>
     </section>

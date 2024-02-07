@@ -20,7 +20,7 @@ section {
 
 .all-Student,
 .all-StudentBlocked {
-    width: 48%; /* 48% para deixar um espaço entre as tabelas */
+    width: 48%;
     display: inline-block;
     vertical-align: top;
 }
