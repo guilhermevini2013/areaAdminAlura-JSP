@@ -12,7 +12,7 @@ import java.net.URI;
 
 
 public class ConnectionInitializer {
-    private CloseableHttpClient httpClient;
+    private  CloseableHttpClient httpClient;
     private HttpGet httpGet;
     private HttpPost httpPost;
     private HttpDelete httpDelete;

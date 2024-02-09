@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.net.URI;
 
 public class DashboardConnection {
-    private ConnectionInitializer connection;
+    private final ConnectionInitializer connection;
 
     public DashboardConnection(ConnectionInitializer connection) {
         this.connection = connection;

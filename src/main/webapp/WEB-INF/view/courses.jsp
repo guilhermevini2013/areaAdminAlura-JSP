@@ -26,13 +26,19 @@
                     <input type="text" name="nameCourse" placeholder="Name course" required>
                     <textarea name="descriptionCourse" id="" cols="30" rows="10" placeholder="Write description"></textarea>
                     <input type="url" placeholder="Course image URL">
-                </div>
-                <div class="container-Form-Course-warn">
-                    <span>Minimum of 3 courses</span>
+                    <label for="combo-box">Category:</label>
+                    <select id="combo-box">
+                        <c:forEach items="${listCategories}" var="category">
+                        <option value="${category.id}">${category.nameCategory}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div class="container-Lesson">
                     <div class="container-Lesson-create">
                         <button>Create video lesson</button>
+                    </div>
+                    <div class="container-Form-Course-warn">
+                        <span>Minimum of 3 courses</span>
                     </div>
                     <div class="container-video">
                         <div class="video-Lesson">

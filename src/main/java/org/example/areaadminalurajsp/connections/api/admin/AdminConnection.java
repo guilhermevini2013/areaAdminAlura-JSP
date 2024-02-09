@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AdminConnection {
-    private ConnectionInitializer initializer;
+    private final ConnectionInitializer initializer;
 
     public AdminConnection(ConnectionInitializer initializer) {
         this.initializer = initializer;

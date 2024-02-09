@@ -3,7 +3,7 @@ package org.example.areaadminalurajsp.servlets.post;
 import org.example.areaadminalurajsp.dtos.insert.CertificateDTO;
 import org.example.areaadminalurajsp.dtos.insert.CourseDTO;
 import org.example.areaadminalurajsp.dtos.insert.VideoLessonDTO;
-import org.example.areaadminalurajsp.service.course.CourseService;
+import org.example.areaadminalurajsp.service.content.CourseService;
 import org.example.areaadminalurajsp.service.singletons.CourseServiceSingleton;
 import org.example.areaadminalurajsp.servlets.IController;
 

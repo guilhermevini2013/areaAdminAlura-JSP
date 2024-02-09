@@ -1,6 +1,6 @@
-package org.example.areaadminalurajsp.service.course;
+package org.example.areaadminalurajsp.service.content;
 
-import org.example.areaadminalurajsp.connections.api.course.CourseConnection;
+import org.example.areaadminalurajsp.connections.api.content.CourseConnection;
 import org.example.areaadminalurajsp.dtos.insert.CourseDTO;
 
 import java.io.IOException;

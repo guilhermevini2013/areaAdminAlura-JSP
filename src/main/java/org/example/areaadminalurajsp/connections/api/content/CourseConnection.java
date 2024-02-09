@@ -1,4 +1,4 @@
-package org.example.areaadminalurajsp.connections.api.course;
+package org.example.areaadminalurajsp.connections.api.content;
 
 import com.google.gson.Gson;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -11,7 +11,7 @@ import java.net.URI;
 
 
 public class CourseConnection{
-    private ConnectionInitializer connection;
+    private final ConnectionInitializer connection;
 
     public CourseConnection(ConnectionInitializer connection) {
         this.connection = connection;
