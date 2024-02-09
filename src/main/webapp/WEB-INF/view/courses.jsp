@@ -35,35 +35,20 @@
                 </div>
                 <div class="container-Lesson">
                     <div class="container-Lesson-create">
-                        <button>Create video lesson</button>
+                        <button id="show-form-create" type="button">Create video lesson</button>
                     </div>
                     <div class="container-Form-Course-warn">
                         <span>Minimum of 3 courses</span>
                     </div>
                     <div class="container-video">
-                        <div class="video-Lesson">
-                            <span>Name Lesson</span>
-                            <span>Time Lesson</span>
-                            <span>archive</span>
-                            <a href="">Remove</a>
-                        </div>
-                        <div class="video-Lesson">
-                            <span>Name Lesson</span>
-                            <span>Time Lesson</span>
-                            <span>archive</span>
-                            <a href="">Remove</a>
-                        </div>
-                        <div class="video-Lesson">
-                            <span>Name Lesson</span>
-                            <span>Time Lesson</span>
-                            <span>archive</span>
-                            <a href="">Remove</a>
-                        </div>
                     </div>
                 </div>
                 <button type="submit" class="container-Form-Course-create">Create course</button>
             </form>
         </div>
     </section>
+    <div id="container-form-create">
+    </div>
+    <script src="/admin/static/js/CourseService.js"></script>
 </body>
 </html>
