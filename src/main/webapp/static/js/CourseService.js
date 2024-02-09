@@ -1,30 +1,56 @@
 let listCourse = new Array();
-function createCourse() {
+function createVideoLesson() {
     const nameVideo = document.getElementById('nameLesson').value;
     let urlVideo = document.getElementById('archive').value;
     let idYT = getIdYT(urlVideo);
     const course = {
-        nameVideo : nameVideo,
-        idYT : idYT
+        nameLesson : nameVideo,
+        archive : idYT
     }
     listCourse.push(course)
     insertCourseToView(listCourse)
     $('#container-form-create').empty();
 }
-
+function sendCourse(){
+    let course = JSON.stringify(getCourse());
+    $.ajax({
+        type: "POST",
+        url: "/admin/course?action=CourseForm",
+        contentType: "application/json; charset=utf-8",
+        data: course
+    });
+    listCourse.pop()
+}
+function getCourse() {
+    let nameContent = document.getElementById('nameCourse').value;
+    let description = document.getElementById('descriptionCourse').value;
+    let certificateDTO = document.getElementById('certificateDTO').value;
+    let comboBox = document.getElementById('combo-box').value;
+    const certificate = {
+        nameCertificate : certificateDTO
+    };
+    const formData = {
+        nameContent: nameContent,
+        description: description,
+        certificateDTO: certificate,
+        idCategory: comboBox,
+        videoLessonDTOList : listCourse
+    };
+    return formData;
+}
 function insertCourseToView(listCourse) {
+    $('.container-video').empty();
     listCourse.forEach(course => {
         let html = `
                 <div class="video-Lesson">
-                            <span>${course.nameVideo}</span>
-                            <span>${course.idYT}</span>
+                            <span>${course.nameLesson}</span>
+                            <span>${course.archive}</span>
                             <a href="">Remove</a>
                         </div>
             `;
         $('.container-video').append(html);
     })
 }
-
 function getIdYT(url) {
     let subsUrl = url.split("=");
     return subsUrl[1];
@@ -40,7 +66,7 @@ $(document).ready(function () {
                             <input type="text" id="nameLesson" required>
                             <label>Url video:</label>
                             <input type="text" id="archive" required>
-                            <button onclick="createCourse()" class="button-send">Create</button>
+                            <button onclick="createVideoLesson()" class="button-send">Create</button>
                         <button id="close-form-create" class="button-cancel">Cancel</button>
                     </div>
                 </div>

@@ -7,12 +7,14 @@ public class CourseDTO {
     private String description;
     private List<VideoLessonDTO> videoLessonDTOList;
     private CertificateDTO certificateDTO;
+    private Long idCategory;
 
-    public CourseDTO(String nameContent, String description, List<VideoLessonDTO> videoLessonDTOList, CertificateDTO certificateDTO) {
+    public CourseDTO(String nameContent, String description, List<VideoLessonDTO> videoLessonDTOList, CertificateDTO certificateDTO,Long idCategory) {
         this.nameContent = nameContent;
         this.description = description;
         this.videoLessonDTOList = videoLessonDTOList;
         this.certificateDTO = certificateDTO;
+        this.idCategory = idCategory;
     }
 
     public String getNameContent() {
@@ -29,5 +31,9 @@ public class CourseDTO {
 
     public CertificateDTO getCertificateDTO() {
         return certificateDTO;
+    }
+
+    public Long getIdCategory() {
+        return idCategory;
     }
 }

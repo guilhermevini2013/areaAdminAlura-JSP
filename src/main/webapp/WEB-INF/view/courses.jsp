@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url value="/course?action=CourseForm" var="courseForm"/>
 <html>
 <head>
     <title>Alura - Admin</title>
@@ -18,18 +19,17 @@
     <c:import url="navComponent.jsp"/>
     <section>
         <div class="container-Form-Course">
-            <form action="" method="post">
                 <div class="container-Form-Course-Tittle">
                     <h1>Create Course</h1>
                 </div>
                 <div class="container-Form-Course-inf">
-                    <input type="text" name="nameCourse" placeholder="Name course" required>
-                    <textarea name="descriptionCourse" id="" cols="30" rows="10" placeholder="Write description"></textarea>
-                    <input type="url" placeholder="Course image URL">
+                    <input type="text" id="nameCourse" placeholder="Name course" required>
+                    <textarea id="descriptionCourse" id="" cols="30" rows="10" placeholder="Write description"></textarea>
+                    <input type="text" id="certificateDTO" placeholder="Name certificate">
                     <label for="combo-box">Category:</label>
                     <select id="combo-box">
                         <c:forEach items="${listCategories}" var="category">
-                        <option value="${category.id}">${category.nameCategory}</option>
+                        <option name="idCategory" value="${category.id}">${category.nameCategory}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -43,8 +43,7 @@
                     <div class="container-video">
                     </div>
                 </div>
-                <button type="submit" class="container-Form-Course-create">Create course</button>
-            </form>
+                <button type="button" onclick="sendCourse()" class="container-Form-Course-create">Create course</button>
         </div>
     </section>
     <div id="container-form-create">
