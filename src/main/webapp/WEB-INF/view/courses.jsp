@@ -24,8 +24,8 @@
                 </div>
                 <div class="container-Form-Course-inf">
                     <input type="text" id="nameCourse" placeholder="Name course" required>
-                    <textarea id="descriptionCourse" id="" cols="30" rows="10" placeholder="Write description"></textarea>
-                    <input type="text" id="certificateDTO" placeholder="Name certificate">
+                    <textarea id="descriptionCourse" required cols="30" rows="10" placeholder="Write description"></textarea>
+                    <input type="text" id="certificateDTO" placeholder="Name certificate" required>
                     <label for="combo-box">Category:</label>
                     <select id="combo-box">
                         <c:forEach items="${listCategories}" var="category">
@@ -46,6 +46,37 @@
                 <button type="button" onclick="sendCourse()" class="container-Form-Course-create">Create course</button>
         </div>
     </section>
+    <div>
+        <div class="section-search">
+            <h1>Search courses</h1>
+            <div class="section-input">
+                <form>
+                    <input type="text" placeholder="search">
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="section-courses">
+<%--                <div>--%>
+<%--                    <p class="warn">No Products Found.</p>--%>
+<%--                </div>--%>
+                <div class="course-card">
+                    <div class="course-inf">
+                        <span></span>
+                        <span>fdadadadawda</span>
+                        <div>
+                            <li>
+                                <span>fffffffff</span>
+                            </li>
+                        </div>
+                        <div class="delete-bnt">
+                            <input type="hidden" name="idContent">
+                            <button type="submit"><ion-icon name="trash-outline" class="icon2"></ion-icon></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="container-form-create">
     </div>
     <script src="/admin/static/js/CourseService.js"></script>

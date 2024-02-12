@@ -19,8 +19,7 @@ public class CourseForm implements IController {
         Gson gson = new Gson();
         String json = request.getReader().readLine();
         CourseDTO course = gson.fromJson(json, CourseDTO.class);
-        String inf = courseService.addCourse(course, token);
-        request.setAttribute("messageInf", inf);
-        return "redirect:courses?action=Courses";
+        courseService.addCourse(course, token);
+        return "redirect:course?action=Courses";
     }
 }

@@ -2,13 +2,13 @@ let listCourse = new Array();
 function createVideoLesson() {
     const nameVideo = document.getElementById('nameLesson').value;
     let urlVideo = document.getElementById('archive').value;
-    let idYT = getIdYT(urlVideo);
+    let idYT = getArchive(urlVideo);
     const course = {
         nameLesson : nameVideo,
         archive : idYT
     }
     listCourse.push(course)
-    insertCourseToView(listCourse)
+    insertVideoLessonToView(listCourse)
     $('#container-form-create').empty();
 }
 function sendCourse(){
@@ -19,7 +19,8 @@ function sendCourse(){
         contentType: "application/json; charset=utf-8",
         data: course
     });
-    listCourse.pop()
+    listCourse.pop();
+    window.location.reload();
 }
 function getCourse() {
     let nameContent = document.getElementById('nameCourse').value;
@@ -38,7 +39,7 @@ function getCourse() {
     };
     return formData;
 }
-function insertCourseToView(listCourse) {
+function insertVideoLessonToView(listCourse) {
     $('.container-video').empty();
     listCourse.forEach(course => {
         let html = `
@@ -51,7 +52,7 @@ function insertCourseToView(listCourse) {
         $('.container-video').append(html);
     })
 }
-function getIdYT(url) {
+function getArchive(url) {
     let subsUrl = url.split("=");
     return subsUrl[1];
 }
